@@ -32,8 +32,10 @@ export async function middleware(request) {
   const isAuthPage = request.nextUrl.pathname.startsWith('/login')
   const isCallback = request.nextUrl.pathname.startsWith('/auth/callback')
   const isApi = request.nextUrl.pathname.startsWith('/api/')
+  const isLegal = request.nextUrl.pathname === '/privacy' || request.nextUrl.pathname === '/terms'
+  const isLanding = request.nextUrl.pathname === '/'
 
-  if (isPublicQuote || isCallback || isApi) {
+  if (isPublicQuote || isCallback || isApi || isLegal || isLanding) {
     return response
   }
 
